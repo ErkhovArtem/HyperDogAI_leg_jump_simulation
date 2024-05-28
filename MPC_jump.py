@@ -160,26 +160,6 @@ class RosManager:
         ref_pos = [x_ref[i, 0] for i in range(sim_steps)]
         ref_vel = [x_ref[i, 1] for i in range(sim_steps)]
 
-        # plt.plot(x_traj, label='trajectory')
-        # plt.plot(ref_pos, label='ref_traj')
-        # plt.ylabel(r"$(x_t)$", fontsize=16)
-        # plt.legend()
-        # plt.grid()
-        # plt.show()
-
-        # plt.plot(v_traj, label='velocity')
-        # plt.plot(ref_vel, label='ref_vel')
-        # plt.ylabel(r"$(v_t)$", fontsize=16)
-        # plt.legend()
-        # plt.grid()
-        # plt.show()
-
-        # plt.plot(u_traj, label='force control')
-        # plt.ylabel(r"$(u_t)$", fontsize=16)
-        # plt.legend()
-        # plt.grid()
-        # plt.show()
-
         if K:
             for i in range(len(u_traj)):
                 u_traj[i] += m * g  # add a constant Gravity force
@@ -206,14 +186,8 @@ class RosManager:
         
         start_time = time.perf_counter()
 
-              
-        # constant_efforts = [10.1, -25]  # Задаем постоянные моменты для суставов
-
         while not rospy.is_shutdown():
             
-            # position_efforts = [1, 1, 1]    
-            # self.controller.apply_effort_position(position_efforts)
-            # rate.sleep()
 
             # hip_torque, knee_torque = self.run_mpc()
             if (time.perf_counter() - start_time) < 3 or self.count == 4:
@@ -239,24 +213,6 @@ class RosManager:
                 self.controller.apply_effort([0, hip_torque*200, knee_torque*200])
                 self.count += 1
 
-                # self.controller.apply_effort([0, 0, 0])
-                # constant_efforts = [0, 0, 0]    
-                # self.controller.apply_effort(constant_efforts)
-                # rate.sleep()
-
-            # else:
-            #     if (time.perf_counter() - start_time) > 10:
-            #         constant_efforts = [0, 8, -20]    
-            #     else:
-            #         constant_efforts = [0, 12, -25] 
-            #     self.controller.apply_effort(constant_efforts)    
-            # rate.sleep()
-
-
-
-    # def listen_joint_state(self, msg: JointState):
-    #     angles = np.array(msg.position[:-1])
-    #     self.controller.set_current_angles(angles)
 
     def listen_joint_state(self, msg: JointState):
         index = msg.name.index("Slider_2")
