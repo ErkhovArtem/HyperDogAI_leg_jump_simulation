@@ -38,10 +38,11 @@ Step-by-step instructions on how to replicate the results obtained in this proje
 List of prerequisites, dependencies, and environment setup necessary to run the project.
 
 ### Setup and Installation
-
+```
 docker build -t batyr_simulation .
 xhost +local:root
 docker run -it --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" batyr_simulation
+```
 
 ### Running the Code
 
