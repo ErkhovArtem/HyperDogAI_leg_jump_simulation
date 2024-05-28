@@ -2,7 +2,7 @@
 # Project Title
 
 ## Overview
-MPC-based control system that allows robot leg jump in simulation and in real life.
+MPC-based control system that allows robot leg jump in Gazebo simulation.
 
 - Course: Advanced Control Methods, Skoltech, 2024
 - Team Members: Elizaveta Pestova, Danil Belov, Liaisan Safarova, Erkhov Artem, Khabibullin Batyr
