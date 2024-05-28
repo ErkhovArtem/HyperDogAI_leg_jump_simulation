@@ -46,20 +46,24 @@ docker run -it --env="DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" batyr
 ### Running the Code
 
 In first terminal:
+```
 source /opt/ros/noetic/setup.bash
 source devel/setup.bash
 roslaunch leg_utils controller.launch
-
+```
 In second terminal:
+```
 source /opt/ros/noetic/setup.bash
 source devel/setup.bash
 rosservice call /gazebo/unpause_physics
-
+```
 In third terminal:
+```
 source /opt/ros/noetic/setup.bash
 source devel/setup.bash
 cd ~/danil_sw/src/leg/control/scripts
 python3 MPC_jump.py
+```
 
 ### Documentation
 If available, provide links to the project documentation or instructions on how to generate it.
