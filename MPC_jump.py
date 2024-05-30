@@ -190,6 +190,7 @@ class RosManager:
             
 
             # hip_torque, knee_torque = self.run_mpc()
+            # first 3 seconds motors are in position mode
             if (time.perf_counter() - start_time) < 3 or self.count == 4:
                 if not self.posistion_mode:
                     self.posistion_mode = True
@@ -200,6 +201,7 @@ class RosManager:
                 position_efforts = [0, 0, -0.6]
                 self.controller.apply_effort_position(position_efforts)
                 rate.sleep()
+            # after 3 seconds motors are change controllers to torque mode (efforts)
             else:
                 if self.posistion_mode:
                     self.posistion_mode = False
